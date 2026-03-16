@@ -4,7 +4,7 @@ export function Effects() {
   return (
     <EffectComposer>
       <Bloom 
-        intensity={2.0} 
+        intensity={0.55}
         luminanceThreshold={0.5} 
         mipmapBlur 
       />

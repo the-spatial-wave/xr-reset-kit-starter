@@ -35,16 +35,18 @@ export function SceneTexts() {
         Build your first XR space
       </Text>
 
-      {/* Branding */}
+      {/* Branding — davanti alla poltrona, in basso */}
       <Text
-        font={ORBITRON_REGULAR}
-        position={[0, -1.05, -0.35]}
-        fontSize={0.12}
+        font={ORBITRON_BOLD}
+        position={[0, 0.32, 1.4]}
+        fontSize={0.14}
         letterSpacing={0.08}
         textAlign="center"
         anchorX="center"
         anchorY="middle"
         color="#ffffff"
+        outlineWidth={0.003}
+        outlineColor="#ccf0ff"
       >
         THE SPATIAL WAVE
       </Text>

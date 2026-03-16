@@ -6,24 +6,24 @@
 ### Accomplishments:
 - [x] Installazione `@react-three/postprocessing` e `postprocessing`.
 - [x] Creazione componente `Effects.tsx` (Bloom).
-- [x] Implementazione `MeshReflectorMaterial` in `FloorGlow.tsx`.
-- [x] Ottimizzazione materiali emissivi in `NeonArch.tsx`.
+- [x] Implementazione `MeshReflectorMaterial` in `FloorGlow.tsx` con layer additivo.
+- [x] Shader Gradient avanzato in `NeonArch.tsx` (Cyan-Violet-Pink + Core Glow).
 - [x] Integrazione `Effects` in `XRReset.tsx`.
 - [x] Upgrade di `three.js` alla versione più recente.
 - [x] Fix build Vite (passaggio a `esbuild`).
 
-- [x] Ottimizzazione scena (Shader Gradient + Haze).
-- [x] Rim Lighting implementato per separazione soggetto.
-- [x] Illuminazione cinematografica ultra-dettagliata: 15+ punti luce per micro-dettagli su materiali.
-- [x] Integrazione definitiva `poltrona-3d.glb` con posizionamento e scala hero.
-- [x] Refinement atmosferico: nebbia densa in primo piano e bagliore volumetrico calibrato.
-- [x] Ottimizzazione particelle per visione XR fluida.
+- [x] Ottimizzazione scena (Three-color Gradient + Core Glow).
+- [x] Illuminazione cinematografica ultra-dettagliata: 20+ punti luce per micro-dettagli su materiali.
+- [x] Integrazione definitiva `poltrona-3d.glb` con posizionamento e scala hero (1.28).
+- [x] Refinement atmosferico: nebbia densa e oscuramento background per contrasto massimo.
+- [x] Ottimizzazione particelle (count 28) per un look pulito e premium.
 - [x] Build di produzione verificata e pronta al deploy.
 
 ### Tech Notes:
-- L'arco neon è stato rimpicciolito e riposizionato per inquadratura ottimale con i testi.
-- Utilizzati blocchi di `pointLight` ad alta intensità e decadimento rapido per simulare il glow fisico.
-- La poltrona è stata scalata a `1.28` per una presenza scenica dominante.
+- Lo shader dell'arco ora gestisce 3 colori con transizioni smoothstep e un core luminoso centrale.
+- Il pavimento utilizza un mix di riflessione blurrata e un layer di colore additivo per calore cromatico.
+- Setup luci ricalibrato: luce di halo singola e potente dietro l'arco, spot-light hero sulla poltrona.
+- Inserito piano scuro occlusivo sotto la poltrona per migliorarne il radicamento a terra.
 
 ### Next Steps:
 - Verificare il look finale in cuffia VR.

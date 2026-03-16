@@ -15,138 +15,154 @@ export function XRReset() {
     <>
       <Effects />
 
-      <color attach="background" args={['#050012']} />
-      <fog attach="fog" args={['#180028', 2.7, 9.2]} />
+      {/* Background più scuro per aumentare contrasto e saturazione */}
+      <color attach="background" args={['#020009']} />
+      <fog attach="fog" args={['#0b0216', 4, 14]} />
 
       {/* ── LUCI BASE ── */}
-      <ambientLight intensity={0.035} color="#2a1750" />
+      {/* Base minima: niente wash generale */}
+      <ambientLight intensity={0.02} color="#241040" />
 
       <hemisphereLight
-        intensity={0.06}
-        color="#77bfff"
-        groundColor="#0a0012"
+        intensity={0.04}
+        color="#5ea8ff"
+        groundColor="#07000d"
       />
 
       <directionalLight
-        position={[0, 2.1, 4]}
-        intensity={0.05}
-        color="#e5efff"
+        position={[0, 2.2, 4]}
+        intensity={0.035}
+        color="#dce9ff"
       />
 
-      {/* ── HALO DIETRO L'ARCO / POLTRONA ── */}
+      {/* ── HALO PRINCIPALE: UNA SOLA LUCE DIETRO L'ARCO ── */}
+      {/* Questa è la luce chiave che crea l'aura poster-like */}
       <pointLight
-        position={[0, 1.32, -0.45]}
-        intensity={32}
-        distance={4.2}
+        position={[0, 1.35, -1.4]}
+        intensity={42}
+        distance={6.5}
         decay={2}
-        color="#87f7ff"
+        color="#9fefff"
+      />
+
+      {/* Halo aggiuntivo dietro arco */}
+      <pointLight
+        position={[0, 1.35, -1.6]}
+        intensity={60}
+        distance={7}
+        decay={2}
+        color="#8ff7ff"
+      />
+
+      {/* ── ACCENTI LEGGERI MAGENTA / CYAN ── */}
+      <pointLight
+        position={[-1.0, 0.95, -0.15]}
+        intensity={10}
+        distance={3.2}
+        decay={2}
+        color="#ff45d8"
       />
 
       <pointLight
-        position={[-0.62, 1.1, -0.36]}
-        intensity={22}
-        distance={3.5}
+        position={[1.0, 0.95, -0.15]}
+        intensity={10}
+        distance={3.2}
         decay={2}
-        color="#ff3ed5"
+        color="#3be4ff"
+      />
+
+      {/* ── ATMOSFERA LATERALE CONTROLLATA ── */}
+      <pointLight
+        position={[-2.0, 0.55, 0.55]}
+        intensity={8}
+        distance={4.6}
+        decay={2}
+        color="#7f2cff"
       />
 
       <pointLight
-        position={[0.64, 1.1, -0.36]}
-        intensity={20}
-        distance={3.5}
+        position={[2.0, 0.55, 0.55]}
+        intensity={8}
+        distance={4.6}
         decay={2}
+        color="#1edbff"
+      />
+
+      {/* Glow viola pavimento — largo e morbido */}
+      <pointLight
+        position={[-0.55, 0.08, -0.28]}
+        intensity={3.5}
+        distance={8}
+        decay={1}
+        color="#ff3edb"
+      />
+
+      {/* Glow cyan pavimento — largo e morbido */}
+      <pointLight
+        position={[0.55, 0.08, -0.28]}
+        intensity={3.5}
+        distance={8}
+        decay={1}
         color="#32e7ff"
       />
 
-      <pointLight
-        position={[0, 1.95, -0.38]}
-        intensity={8}
-        distance={3.8}
+      {/* Key light sulla chair — frontale alto, neutro/freddo */}
+      <spotLight
+        position={[0, 2.8, 2.2]}
+        target-position={[0, 0.6, 0.18]}
+        intensity={55}
+        distance={6}
+        angle={0.28}
+        penumbra={0.85}
         decay={2}
-        color="#d2fbff"
+        color="#e8f4ff"
       />
 
-      {/* Rim light morbide sui lati della poltrona */}
+      {/* Punto luce frontale basso — subito davanti alla chair */}
       <pointLight
-        position={[-0.98, 1.0, 0.24]}
-        intensity={14}
-        distance={2.9}
-        decay={2}
-        color="#ff4ddd"
-      />
-
-      <pointLight
-        position={[0.98, 1.0, 0.24]}
-        intensity={14}
-        distance={2.9}
-        decay={2}
-        color="#49e8ff"
-      />
-
-      {/* Atmosfera laterale */}
-      <pointLight
-        position={[-2.2, 0.9, 0.3]}
-        intensity={13}
-        distance={5.4}
-        decay={2}
-        color="#7c27ff"
-      />
-
-      <pointLight
-        position={[2.15, 0.95, 0.35]}
-        intensity={13}
-        distance={5.3}
-        decay={2}
-        color="#1edcff"
-      />
-
-      {/* Riflessi a terra */}
-      <pointLight
-        position={[-0.58, 0.15, 0.9]}
-        intensity={10}
+        position={[0, 0.32, 1.6]}
+        intensity={12}
         distance={2.5}
         decay={2}
-        color="#ff42d8"
+        color="#e8f4ff"
       />
 
+      {/* Fill molto leggero sulla chair */}
       <pointLight
-        position={[0.6, 0.15, 0.9]}
-        intensity={10}
-        distance={2.5}
-        decay={2}
-        color="#39e3ff"
-      />
-
-      {/* Fill basso minimo */}
-      <pointLight
-        position={[0, 0.72, 1.55]}
-        intensity={4.5}
+        position={[0, 0.78, 1.45]}
+        intensity={3.5}
         distance={2.8}
         decay={2}
-        color="#a9c2ff"
+        color="#9dbbff"
       />
 
       {/* ── ELEMENTI SCENA ── */}
-      <Particles count={38} />
+      <Particles count={28} />
 
-      {/* Arco piccolo e vicino, ma un po' più basso per non mangiare il sottotitolo */}
+      {/* Arco */}
       <group position={[0, 0.08, -0.52]} scale={0.66}>
         <NeonArch />
       </group>
 
-      {/* Glow più stretto sotto la chair */}
+      {/* Glow pavimento */}
       <group position={[0, 0.03, 0.02]} scale={0.78}>
         <FloorGlow />
       </group>
 
-      {/* Poltrona: posizione mantenuta */}
+      {/* Piano scuro sotto la poltrona */}
+      <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, 0.04, 0]}>
+        <circleGeometry args={[3.2, 64]} />
+        <meshBasicMaterial color="#010005" transparent opacity={0.82} depthWrite={false} />
+      </mesh>
+
+      {/* Poltrona */}
       <Suspense fallback={null}>
         <group position={[0, 0.5, 0.18]} scale={1.28}>
           <GraffitiChair />
         </group>
       </Suspense>
 
-      {/* Testi scena */}
+      {/* Testi */}
       <SceneTexts />
     </>
   )
