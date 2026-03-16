@@ -9,11 +9,13 @@ import { FloorGlow } from '../components/FloorGlow'
 import { GraffitiChair } from '../components/GraffitiChair'
 import { SceneTexts } from '../components/SceneTexts'
 import { Effects } from '../components/Effects'
+import { AudioPlayer } from '../components/AudioPlayer'
 
 export function XRReset() {
   return (
     <>
       <Effects />
+      <AudioPlayer url="/audio/audio ambient.mp3" volume={0.45} />
 
       {/* Background più scuro per aumentare contrasto e saturazione */}
       <color attach="background" args={['#020009']} />
