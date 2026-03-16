@@ -10,12 +10,18 @@ import { GraffitiChair } from '../components/GraffitiChair'
 import { SceneTexts } from '../components/SceneTexts'
 import { Effects } from '../components/Effects'
 import { AudioPlayer } from '../components/AudioPlayer'
+import { VideoPanel } from '../components/VideoPanel'
+import { CameraRig } from '../components/CameraRig'
 
-export function XRReset() {
+interface XRResetProps {
+  videoMode?: boolean
+}
+
+export function XRReset({ videoMode = false }: XRResetProps) {
   return (
     <>
       <Effects />
-      <AudioPlayer url="/audio/audio ambient.mp3" volume={0.45} />
+      <AudioPlayer url="/audio/audio ambient.mp3" volume={0.45} paused={videoMode} />
 
       {/* Background più scuro per aumentare contrasto e saturazione */}
       <color attach="background" args={['#020009']} />
@@ -166,6 +172,15 @@ export function XRReset() {
 
       {/* Testi */}
       <SceneTexts />
+
+      {/* ── VIDEO PANEL — retro del portale ── */}
+      {/* Arch world center: [0, 0.872, -1.18] — piano ruotato verso la camera video */}
+      <group position={[0, 1.15, -1.23]} rotation={[0, Math.PI, 0]}>
+        <VideoPanel url="/video/video 1.mp4" visible={videoMode} />
+      </group>
+
+      {/* Camera rig per transizione chair ↔ portal */}
+      <CameraRig videoMode={videoMode} />
     </>
   )
 }

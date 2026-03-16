@@ -1,5 +1,13 @@
 # Progress Log - 2026-03-16
 
+## Task: Documentazione Tecnica Scena
+**Stato**: Completato
+
+### Accomplishments:
+- [x] Creazione guida dettagliata `03_DOCUMENTATION/implementazione-scena.md`.
+- [x] Documentazione shader `NeonArch` e sistema luci `XRReset`.
+- [x] Formalizzazione scelte di asset e ottimizzazione performance.
+
 ## Task: Riproduzione Effetto Neon Cyberpunk
 **Stato**: Completato (Build OK)
 

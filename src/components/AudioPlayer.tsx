@@ -9,9 +9,10 @@ interface AudioPlayerProps {
   url: string
   volume?: number
   loop?: boolean
+  paused?: boolean
 }
 
-export function AudioPlayer({ url, volume = 0.45, loop = true }: AudioPlayerProps) {
+export function AudioPlayer({ url, volume = 0.45, loop = true, paused = false }: AudioPlayerProps) {
   const { camera } = useThree()
   const listenerRef = useRef<THREE.AudioListener | null>(null)
   const soundRef = useRef<THREE.Audio | null>(null)
@@ -28,7 +29,7 @@ export function AudioPlayer({ url, volume = 0.45, loop = true }: AudioPlayerProp
       sound.setBuffer(buffer)
       sound.setLoop(loop)
       sound.setVolume(volume)
-      sound.play()
+      if (!paused) sound.play()
     })
 
     soundRef.current = sound
@@ -39,6 +40,18 @@ export function AudioPlayer({ url, volume = 0.45, loop = true }: AudioPlayerProp
       camera.remove(listener)
     }
   }, [url])
+
+  // Stop / resume in base alla prop paused
+  useEffect(() => {
+    const sound = soundRef.current
+    if (!sound) return
+    if (paused) {
+      if (sound.isPlaying) sound.stop()
+    } else {
+      // Riprende solo se il buffer è già caricato
+      if (!sound.isPlaying && sound.buffer) sound.play()
+    }
+  }, [paused])
 
   return null
 }
