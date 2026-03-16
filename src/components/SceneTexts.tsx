@@ -1,73 +1,53 @@
-import { Html } from '@react-three/drei'
-import { useDeviceDetect } from '../hooks/useDeviceDetect'
+import { Text } from '@react-three/drei'
+
+const ORBITRON_BOLD = 'https://cdn.jsdelivr.net/npm/@fontsource/orbitron/files/orbitron-latin-700-normal.woff'
+const ORBITRON_REGULAR = 'https://cdn.jsdelivr.net/npm/@fontsource/orbitron/files/orbitron-latin-400-normal.woff'
 
 export function SceneTexts() {
-  const { isMobile } = useDeviceDetect()
-
-  if (isMobile) return null
-
   return (
     <>
-      {/* TITOLO + SOTTOTITOLO — in alto centrato */}
-      <Html
-        position={[0, 5.8, -1.2]}
-        occlude={false}
-        zIndexRange={[1, 10]}
-        center
+      {/* XR RESET */}
+      <Text
+        font={ORBITRON_BOLD}
+        position={[0, 1.6, -0.45]}
+        fontSize={0.38}
+        letterSpacing={0.02}
+        textAlign="center"
+        anchorX="center"
+        anchorY="middle"
+        color="#ffffff"
+        outlineWidth={0.01}
+        outlineColor="#ffffff"
       >
-        <div style={{ textAlign: 'center', pointerEvents: 'none', userSelect: 'none' }}>
-          <div
-            style={{
-              fontFamily: "'Orbitron', 'Arial Black', Arial, sans-serif",
-              fontSize: '58px',
-              fontWeight: 900,
-              color: '#FFFFFF',
-              letterSpacing: '6px',
-              lineHeight: 1,
-              marginBottom: '14px',
-              textShadow: '0 0 40px rgba(100, 80, 255, 0.9), 0 0 80px rgba(100, 80, 255, 0.4)',
-            }}
-          >
-            XR RESET
-          </div>
-          <div
-            style={{
-              fontFamily: "'Manrope', Arial, sans-serif",
-              fontSize: '17px',
-              color: '#00E5FF',
-              letterSpacing: '2.5px',
-              fontWeight: 400,
-              textShadow: '0 0 20px rgba(0, 229, 255, 0.6)',
-            }}
-          >
-            Build your first XR space
-          </div>
-        </div>
-      </Html>
+        XR RESET
+      </Text>
 
-      {/* BRAND LABEL — in basso */}
-      <Html
-        position={[0, 0.08, 1.8]}
-        occlude={false}
-        zIndexRange={[1, 10]}
-        center
+      {/* Subtitle */}
+      <Text
+        font={ORBITRON_REGULAR}
+        position={[0, 1.28, -0.45]}
+        fontSize={0.17}
+        textAlign="center"
+        anchorX="center"
+        anchorY="middle"
+        color="#9feaff"
       >
-        <div
-          style={{
-            fontFamily: "'Orbitron', Arial, sans-serif",
-            fontSize: '11px',
-            fontWeight: 500,
-            color: '#C8CCD6',
-            letterSpacing: '6px',
-            textTransform: 'uppercase',
-            pointerEvents: 'none',
-            userSelect: 'none',
-            opacity: 0.85,
-          }}
-        >
-          THE SPATIAL WAVE
-        </div>
-      </Html>
+        Build your first XR space
+      </Text>
+
+      {/* Branding */}
+      <Text
+        font={ORBITRON_REGULAR}
+        position={[0, -1.05, -0.35]}
+        fontSize={0.12}
+        letterSpacing={0.08}
+        textAlign="center"
+        anchorX="center"
+        anchorY="middle"
+        color="#ffffff"
+      >
+        THE SPATIAL WAVE
+      </Text>
     </>
   )
 }

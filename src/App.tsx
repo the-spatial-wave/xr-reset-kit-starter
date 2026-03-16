@@ -11,18 +11,17 @@ export default function App() {
         position: 'fixed',
         top: 0,
         left: 0,
-        background: '#080C12',
+        background: 'linear-gradient(to bottom, #110022, #000033, #001144)', // Deep purple, indigo, electric blue
       }}
     >
       <Canvas
-        camera={{ position: [0, 2.5, 5], fov: 50 }}
-        gl={{ antialias: true, alpha: false }}
+        camera={{ position: [0, 1.5, 4], fov: 50 }}
+        gl={{ antialias: true, alpha: true }}
         dpr={[1, 2]}
         shadows={false}
       >
-        <color attach="background" args={['#080C12']} />
-
         <OrbitControls
+          target={[0, 1, 0]}
           enablePan={false}
           enableZoom={false}
           minPolarAngle={Math.PI / 4}

@@ -1,26 +1,29 @@
 // FloorGlow.tsx
 // Riflessi colorati sul pavimento: cyan (dx), magenta (sx), violet (centro)
 
+import { MeshReflectorMaterial } from '@react-three/drei'
+
 export function FloorGlow() {
   return (
     <group>
-      {/* Glow cyan — destra */}
-      <mesh rotation={[-Math.PI / 2, 0, 0]} position={[1.8, 0.005, 0.8]}>
-        <planeGeometry args={[3.5, 2.5]} />
-        <meshBasicMaterial color="#00E5FF" transparent opacity={0.13} />
+      {/* Pavimento riflettente principale */}
+      <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, 0, 0]}>
+        <planeGeometry args={[50, 50]} />
+        <MeshReflectorMaterial
+          blur={[300, 100]}
+          resolution={1024}
+          mixBlur={1}
+          mixStrength={40}
+          roughness={1}
+          depthScale={1.2}
+          minDepthThreshold={0.4}
+          maxDepthThreshold={1.4}
+          color="#1a0033" // Very dark purple
+          metalness={0.5}
+          mirror={1}
+        />
       </mesh>
 
-      {/* Glow magenta — sinistra */}
-      <mesh rotation={[-Math.PI / 2, 0, 0]} position={[-1.8, 0.005, 0.8]}>
-        <planeGeometry args={[3.5, 2.5]} />
-        <meshBasicMaterial color="#FF2FD6" transparent opacity={0.13} />
-      </mesh>
-
-      {/* Alone violet — sotto la poltrona */}
-      <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, 0.006, 0.4]}>
-        <circleGeometry args={[1.2, 32]} />
-        <meshBasicMaterial color="#7A6CFF" transparent opacity={0.08} />
-      </mesh>
     </group>
   )
 }
