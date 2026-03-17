@@ -45,6 +45,16 @@
 - [x] Build di produzione verificata post-sincronizzazione.
 - [x] Commit e Push su branch `main`.
 - [x] Audit qualitativo `index.html`: struttura pulita, font caricati correttamente, setup CSS per XR ottimizzato.
+- [x] Implementazione stato `mode` (DEFAULT/VIDEO) e UI di controllo START/STOP.
+- [x] Integrazione `AudioPlayer` con attivazione post-splash screen.
+- [x] Integrazione `VideoPanel` su retro-portale con rotazione animata (lerp).
+- [x] Build di produzione verificata post-integrazione (OK).
+- [x] Deploy aggiornato su Vercel.
+
+### Tech Notes:
+- La rotazione del portale è gestita tramite `THREE.MathUtils.lerp` per un movimento cinematografico fluido.
+- L'audio ambient è stato configurato per partire solo dopo l'interazione utente per rispettare le policy dei browser.
+- I percorsi degli asset sono ora assoluti (`/video/...`) per garantire la compatibilità cross-platform.
 
 ### Tech Notes:
 - Le cartelle aggiunte contengono documentazione statica e prompt, non influenzano il runtime React.

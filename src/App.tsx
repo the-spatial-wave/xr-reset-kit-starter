@@ -61,15 +61,9 @@ export default function App() {
       <div className={`ui-controls ${entered ? 'visible' : ''}`}>
         <button 
           className={`control-btn ${mode === 'VIDEO' ? 'active' : ''}`}
-          onClick={() => setMode('VIDEO')}
+          onClick={() => setMode(mode === 'VIDEO' ? 'DEFAULT' : 'VIDEO')}
         >
-          {mode === 'VIDEO' ? 'Playing' : 'Start Portal'}
-        </button>
-        <button 
-          className="control-btn"
-          onClick={() => setMode('DEFAULT')}
-        >
-          Reset Focus
+          {mode === 'VIDEO' ? 'Stop Portal' : 'Start Portal'}
         </button>
       </div>
 

@@ -37,12 +37,13 @@ export function XRReset({ mode, entered }: XRResetProps) {
     <>
       <Effects />
 
-      {/* Audio Ambient — si attiva solo dopo l'ingresso */}
+      {/* Audio Ambient — si attiva solo dopo l'ingresso, in pausa quando il portale è attivo */}
       {entered && (
         <AudioPlayer 
           url="/audio/audio ambient.mp3" 
           volume={0.4} 
           loop={true} 
+          paused={mode === 'VIDEO'}
         />
       )}
 

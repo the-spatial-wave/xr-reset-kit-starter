@@ -35,7 +35,7 @@ export function AudioPlayer({ url, volume = 0.45, loop = true, paused = false }:
     soundRef.current = sound
 
     return () => {
-      if (soundRef.current?.isPlaying) soundRef.current.stop()
+      if (soundRef.current?.isPlaying) soundRef.current.pause()
       soundRef.current?.disconnect()
       camera.remove(listener)
     }
@@ -46,7 +46,7 @@ export function AudioPlayer({ url, volume = 0.45, loop = true, paused = false }:
     const sound = soundRef.current
     if (!sound) return
     if (paused) {
-      if (sound.isPlaying) sound.stop()
+      if (sound.isPlaying) sound.pause()
     } else {
       // Riprende solo se il buffer è già caricato
       if (!sound.isPlaying && sound.buffer) sound.play()
