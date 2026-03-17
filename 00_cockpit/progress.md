@@ -45,16 +45,14 @@
 - [x] Build di produzione verificata post-sincronizzazione.
 - [x] Commit e Push su branch `main`.
 - [x] Audit qualitativo `index.html`: struttura pulita, font caricati correttamente, setup CSS per XR ottimizzato.
-- [x] Implementazione stato `mode` (DEFAULT/VIDEO) e UI di controllo toggle "Start/Stop Portal".
-- [x] Audio Ambient: ora si mette in pausa all'apertura del portale e riprende dallo stesso punto alla chiusura.
-- [x] Video Portal: riproduzione singola (no loop), reset automatico all'inizio per ogni attivazione.
-- [x] Rimozione pulsante "Reset Focus" per una UI più pulita ed essenziale.
-- [x] Build di produzione verificata e deploy su Vercel aggiornato.
+- [x] Implementazione `CameraRig`: la camera ora si sposta sul retro del portale per guardare il video.
+- [x] Risolto problema collisione: il portale rimane fermo, evitando di entrare nella poltrona.
+- [x] Sincronizzazione perfetta: lo spostamento camera è fluido e disabilita l'OrbitControls durante il volo.
+- [x] Build di produzione verificata (OK) e deploy Vercel aggiornato.
 
 ### Tech Notes:
-- Utilizzato `sound.pause()` in Three.js per mantenere il timestamp dell'audio ambientale.
-- Logica di toggle pulsante in `App.tsx` basata sul valore di `mode`.
-- Video configurato con `video.currentTime = 0` ad ogni chiusura del portale.
+- Il `CameraRig` gestisce il passaggio tra le coordinate `CHAIR_POS` e `PORTAL_POS` tramite lerp.
+- Il video è posizionato staticamente a `rotation={[0, Math.PI, 0]}` sul retro del portale.
 
 ### Tech Notes:
 - Le cartelle aggiunte contengono documentazione statica e prompt, non influenzano il runtime React.

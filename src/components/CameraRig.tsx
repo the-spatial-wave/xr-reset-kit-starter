@@ -9,7 +9,7 @@ import * as THREE from 'three'
 const CHAIR_POS    = new THREE.Vector3(0, 1.5,  4)
 const CHAIR_TARGET = new THREE.Vector3(0, 1.0,  0)
 const PORTAL_POS   = new THREE.Vector3(0, 1.5, -5)
-const PORTAL_TARGET = new THREE.Vector3(0, 0.87, -1.18)
+const PORTAL_TARGET = new THREE.Vector3(0, 0.97, -1.18)
 
 const LERP_SPEED = 0.04
 const ARRIVAL    = 0.06
