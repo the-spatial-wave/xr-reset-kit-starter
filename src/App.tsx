@@ -3,6 +3,7 @@ import { Canvas } from '@react-three/fiber'
 import { OrbitControls } from '@react-three/drei'
 import { XRReset } from './scenes/XRReset'
 import { SplashScreen } from './components/SplashScreen'
+import { useDeviceDetect } from './hooks/useDeviceDetect'
 
 const LOCAL_VIDEOS = [
   { label: 'video-welcome.mp4', value: '/video/video-welcome.mp4' },
@@ -15,6 +16,7 @@ function toDriveUrl(url: string) {
 }
 
 export default function App() {
+  const { isMobile } = useDeviceDetect()
   const [entered, setEntered] = useState(false)
   const [mode, setMode] = useState<'DEFAULT' | 'VIDEO'>('DEFAULT')
   const [videoUrl, setVideoUrl] = useState<string>('/video/video-welcome.mp4')
@@ -346,15 +348,15 @@ export default function App() {
         <Canvas
           camera={{ position: [0, 1.5, 4], fov: 50 }}
           gl={{ antialias: true, alpha: true }}
-          dpr={[1, 2]}
+          dpr={isMobile ? [1, 1.5] : [1, 2]}
           shadows={false}
         >
           <OrbitControls
             target={[0, 1, 0]}
             enablePan={false}
             enableZoom={mode === 'VIDEO'}
-            minDistance={1.5}
-            maxDistance={5}
+            minDistance={isMobile ? 2 : 1.5}
+            maxDistance={isMobile ? 10 : 5}
             zoomSpeed={0.8}
             minPolarAngle={Math.PI / 4}
             maxPolarAngle={Math.PI / 2}

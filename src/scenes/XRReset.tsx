@@ -9,6 +9,7 @@ import { Effects } from '../components/Effects'
 import { AudioPlayer } from '../components/AudioPlayer'
 import { VideoPanel } from '../components/VideoPanel'
 import { CameraRig } from '../components/CameraRig'
+import { useDeviceDetect } from '../hooks/useDeviceDetect'
 
 interface XRResetProps {
   mode: 'DEFAULT' | 'VIDEO'
@@ -17,9 +18,11 @@ interface XRResetProps {
 }
 
 export function XRReset({ mode, entered, videoUrl }: XRResetProps) {
+  const { isMobile } = useDeviceDetect()
+
   return (
     <>
-      <Effects />
+      <Effects mobile={isMobile} />
 
       {/* Audio Ambient — si attiva solo dopo l'ingresso, in pausa quando il portale è attivo */}
       {entered && (
@@ -88,7 +91,7 @@ export function XRReset({ mode, entered, videoUrl }: XRResetProps) {
       />
 
       {/* ── ELEMENTI SCENA ── */}
-      <Particles count={28} />
+      <Particles count={isMobile ? 14 : 28} />
 
       {/* Portale (Fermo, camera si sposta sul retro) */}
       <group position={[0, 0.08, -0.52]} scale={0.66}>
