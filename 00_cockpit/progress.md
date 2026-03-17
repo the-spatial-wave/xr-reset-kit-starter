@@ -45,14 +45,13 @@
 - [x] Build di produzione verificata post-sincronizzazione.
 - [x] Commit e Push su branch `main`.
 - [x] Audit qualitativo `index.html`: struttura pulita, font caricati correttamente, setup CSS per XR ottimizzato.
-- [x] Implementazione `CameraRig`: la camera ora si sposta sul retro del portale per guardare il video.
-- [x] Risolto problema collisione: il portale rimane fermo, evitando di entrare nella poltrona.
-- [x] Sincronizzazione perfetta: lo spostamento camera è fluido e disabilita l'OrbitControls durante il volo.
-- [x] Build di produzione verificata (OK) e deploy Vercel aggiornato.
+- [x] Implementazione pulsante "Home": permette di resettare l'esperienza e tornare alla SplashScreen.
+- [x] Gestione Audio/Video: l'audio si interrompe correttamente quando si torna alla Home.
+- [x] Build di produzione verificata (31s) e deploy Vercel aggiornato.
 
 ### Tech Notes:
-- Il `CameraRig` gestisce il passaggio tra le coordinate `CHAIR_POS` e `PORTAL_POS` tramite lerp.
-- Il video è posizionato staticamente a `rotation={[0, Math.PI, 0]}` sul retro del portale.
+- Lo stato `entered` viene resettato a `false`, innescando il rimontaggio del componente `SplashScreen`.
+- Il pulsante Home è visibile solo in modalità `DEFAULT` per mantenere pulita la visualizzazione video.
 
 ### Tech Notes:
 - Le cartelle aggiunte contengono documentazione statica e prompt, non influenzano il runtime React.
