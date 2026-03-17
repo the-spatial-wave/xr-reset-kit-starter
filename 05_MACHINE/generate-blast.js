@@ -2,7 +2,7 @@
 // ============================================================================
 // TSW XR SCENE MACHINE — BLAST Generator
 // The Spatial Wave · xr-immersive-web-v1
-// Metodo: Jack Robert BLAST
+// Metodo: BLAST
 //
 // USAGE:
 //   node generate-blast.js --name "SceneName" --desc "brief description"
@@ -29,71 +29,71 @@ function getArg(flag) {
   return i !== -1 && args[i + 1] ? args[i + 1] : null;
 }
 
-var sceneName  = getArg('--name')    || 'SceneNew';
-var desc       = getArg('--desc')    || 'Nuova scena XR per The Spatial Wave';
-var objects    = getArg('--objects') || 'floor,particles,overlay';
-var lights     = getArg('--lights')  || 'cyan,magenta';
-var texts      = getArg('--texts')   || 'XR SCENE,subtitle text';
-var outputFile = getArg('--output')  || null;
+var sceneName = getArg('--name') || 'SceneNew';
+var desc = getArg('--desc') || 'Nuova scena XR per The Spatial Wave';
+var objects = getArg('--objects') || 'floor,particles,overlay';
+var lights = getArg('--lights') || 'cyan,magenta';
+var texts = getArg('--texts') || 'XR SCENE,subtitle text';
+var outputFile = getArg('--output') || null;
 
 // ─── Derive component name ──────────────────────────────────────────────────
 var componentName = 'Scene' + sceneName.replace(/[^a-zA-Z0-9]/g, '');
-var fileName      = componentName + '.tsx';
+var fileName = componentName + '.tsx';
 
 // ─── Parse arrays ────────────────────────────────────────────────────────────
-var objectList = objects.split(',').map(function(s) { return s.trim(); });
-var lightList  = lights.split(',').map(function(s) { return s.trim(); });
-var textList   = texts.split(',').map(function(s) { return s.trim(); });
+var objectList = objects.split(',').map(function (s) { return s.trim(); });
+var lightList = lights.split(',').map(function (s) { return s.trim(); });
+var textList = texts.split(',').map(function (s) { return s.trim(); });
 
-var mainTitle    = textList[0] || 'XR SCENE';
-var subTitle     = textList[1] || 'subtitle';
-var brandLabel   = textList[2] || 'THE SPATIAL WAVE';
+var mainTitle = textList[0] || 'XR SCENE';
+var subTitle = textList[1] || 'subtitle';
+var brandLabel = textList[2] || 'THE SPATIAL WAVE';
 
 // ─── Light presets ────────────────────────────────────────────────────────────
 var lightPresets = {
-  cyan:    '<pointLight position={[4, 3, -0.5]}   color="#00E5FF" intensity={4} distance={9} decay={2} />',
+  cyan: '<pointLight position={[4, 3, -0.5]}   color="#00E5FF" intensity={4} distance={9} decay={2} />',
   magenta: '<pointLight position={[-4, 3, -0.5]}  color="#FF2FD6" intensity={4} distance={9} decay={2} />',
-  violet:  '<pointLight position={[0, 0.3, 1]}    color="#7A6CFF" intensity={1.2} distance={4} decay={2} />',
-  teal:    '<pointLight position={[2, 4, 2]}      color="#2EF2C9" intensity={2} distance={7} decay={2} />',
-  warm:    '<pointLight position={[0, 5, 3]}      color="#FFB060" intensity={1.5} distance={8} decay={2} />',
-  white:   '<directionalLight position={[5, 8, 5]} intensity={0.6} />'
+  violet: '<pointLight position={[0, 0.3, 1]}    color="#7A6CFF" intensity={1.2} distance={4} decay={2} />',
+  teal: '<pointLight position={[2, 4, 2]}      color="#2EF2C9" intensity={2} distance={7} decay={2} />',
+  warm: '<pointLight position={[0, 5, 3]}      color="#FFB060" intensity={1.5} distance={8} decay={2} />',
+  white: '<directionalLight position={[5, 8, 5]} intensity={0.6} />'
 };
 
 var lightsCode = [
   '<ambientLight intensity={0.06} />',
   '<directionalLight position={[2, 8, 4]} intensity={0.25} color="#9090ff" />'
 ];
-lightList.forEach(function(l) {
+lightList.forEach(function (l) {
   if (lightPresets[l]) lightsCode.push(lightPresets[l]);
 });
 
 // ─── Object descriptions ─────────────────────────────────────────────────────
 var objectDescriptions = {
-  'particles':      '~220 punti argento sparsi  | Particles (useRef<THREE.Points>, useFrame rotation.y)',
-  'floor-glow':     'Piani emissivi pavimento   | FloorGlow (plane cyan dx, magenta sx, circle violet)',
-  'neon-arch':      'Arco neon circolare        | NeonArch (torus bianco emissivo + glow, pos [0,2.8,-1.2])',
-  'chair':          'Poltrona placeholder       | ChairPlaceholder (box geometries) -> GraffitiChair GLTF',
-  'lyra-avatar':    'Avatar Lyra                | useGLTF("/models/lyra.glb") + useAnimations',
-  'floating-frames':'Frame fluttuanti           | mesh plane + texture + useFrame oscillazione',
-  'floor':          'Pavimento dark             | planeGeometry [28,28] color #080C12',
-  'overlay':        'HTML text overlay          | SceneTexts (Html drei, solo desktop)',
-  'fog':            'Nebbia atmosferica         | fog attach="fog" #0a0818 near=10 far=22',
-  'cta-panel':      'Pannello CTA glassmorphism | Html drei, glassmorphism dark, CTA gradient button'
+  'particles': '~220 punti argento sparsi  | Particles (useRef<THREE.Points>, useFrame rotation.y)',
+  'floor-glow': 'Piani emissivi pavimento   | FloorGlow (plane cyan dx, magenta sx, circle violet)',
+  'neon-arch': 'Arco neon circolare        | NeonArch (torus bianco emissivo + glow, pos [0,2.8,-1.2])',
+  'chair': 'Poltrona placeholder       | ChairPlaceholder (box geometries) -> GraffitiChair GLTF',
+  'lyra-avatar': 'Avatar Lyra                | useGLTF("/models/lyra.glb") + useAnimations',
+  'floating-frames': 'Frame fluttuanti           | mesh plane + texture + useFrame oscillazione',
+  'floor': 'Pavimento dark             | planeGeometry [28,28] color #080C12',
+  'overlay': 'HTML text overlay          | SceneTexts (Html drei, solo desktop)',
+  'fog': 'Nebbia atmosferica         | fog attach="fog" #0a0818 near=10 far=22',
+  'cta-panel': 'Pannello CTA glassmorphism | Html drei, glassmorphism dark, CTA gradient button'
 };
 
 // ─── Generate BLAST ────────────────────────────────────────────────────────────
 var now = new Date();
-var dateStr = now.getFullYear() + '-' + String(now.getMonth()+1).padStart(2,'0') + '-' + String(now.getDate()).padStart(2,'0');
+var dateStr = now.getFullYear() + '-' + String(now.getMonth() + 1).padStart(2, '0') + '-' + String(now.getDate()).padStart(2, '0');
 
 var divider = '━'.repeat(70);
-var header  = '╔' + '═'.repeat(70) + '╗';
-var footer  = '╚' + '═'.repeat(70) + '╝';
+var header = '╔' + '═'.repeat(70) + '╗';
+var footer = '╚' + '═'.repeat(70) + '╝';
 
 var blast = [
   '',
   header,
   '║  BLAST — ' + componentName.toUpperCase() + ' '.repeat(Math.max(0, 59 - componentName.length)) + '║',
-  '║  The Spatial Wave · xr-immersive-web-v1 · Jack Robert BLAST' + ' '.repeat(9) + '║',
+  '║  The Spatial Wave · xr-immersive-web-v1 · BLAST' + ' '.repeat(21) + '║',
   '║  Generato il: ' + dateStr + ' '.repeat(53) + '║',
   footer,
   '',
@@ -114,7 +114,7 @@ var blast = [
   divider,
   '[ ELEMENTI 3D ]'
 ].concat(
-  objectList.map(function(obj) {
+  objectList.map(function (obj) {
     var d = objectDescriptions[obj] || (obj + ' (elemento personalizzato)');
     return '  ' + obj.padEnd(22) + '| ' + d;
   })
@@ -122,7 +122,7 @@ var blast = [
   '',
   '[ LUCI ]'
 ]).concat(
-  lightsCode.map(function(l) { return '  ' + l; })
+  lightsCode.map(function (l) { return '  ' + l; })
 ).concat([
   '',
   '[ HTML OVERLAY — solo desktop >= 768px ]',

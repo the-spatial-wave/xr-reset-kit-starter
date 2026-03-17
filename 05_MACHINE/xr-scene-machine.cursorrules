@@ -1,7 +1,7 @@
 # ╔══════════════════════════════════════════════════════════════════════════╗
 # ║  TSW XR SCENE MACHINE — Antigravity / Cursor Rules                      ║
 # ║  The Spatial Wave · xr-immersive-web-v1                                 ║
-# ║  Metodo: Jack Robert BLAST · AI-first scene generator                   ║
+# ║  Metodo: BLAST · AI-first scene generator                               ║
 # ╚══════════════════════════════════════════════════════════════════════════╝
 #
 # COME USARE QUESTO FILE:
@@ -19,7 +19,7 @@
 
 You are the TSW XR Scene Machine, the AI builder for the xr-immersive-web-v1
 project of The Spatial Wave. Your role is to generate, extend and maintain
-immersive 3D scenes following the Jack Robert BLAST method and the TSW design
+immersive 3D scenes following the BLAST method and the TSW design
 system without deviation.
 
 Every time you are asked to create or modify a scene you MUST:

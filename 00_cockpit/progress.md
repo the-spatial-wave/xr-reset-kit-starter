@@ -1,41 +1,30 @@
-# Progress Log - 2026-03-16
+# Progress Log - 2026-03-17
 
-## Task: Documentazione Tecnica Scena
-**Stato**: Completato
-
-### Accomplishments:
-- [x] Creazione guida dettagliata `03_DOCUMENTATION/implementazione-scena.md`.
-- [x] Documentazione shader `NeonArch` e sistema luci `XRReset`.
-- [x] Formalizzazione scelte di asset e ottimizzazione performance.
-
-## Task: Riproduzione Effetto Neon Cyberpunk
+## Task: Evoluzione V2 (Dynamic Portal)
 **Stato**: Completato (Build OK)
 
 ### Accomplishments:
-- [x] Installazione `@react-three/postprocessing` e `postprocessing`.
-- [x] Creazione componente `Effects.tsx` (Bloom).
-- [x] Implementazione `MeshReflectorMaterial` in `FloorGlow.tsx` con layer additivo.
-- [x] Shader Gradient avanzato in `NeonArch.tsx` (Cyan-Violet-Pink + Core Glow).
-- [x] Integrazione `Effects` in `XRReset.tsx`.
-- [x] Upgrade di `three.js` alla versione più recente.
-- [x] Fix build Vite (passaggio a `esbuild`).
-
-- [x] Ottimizzazione scena (Three-color Gradient + Core Glow).
-- [x] Illuminazione cinematografica ultra-dettagliata: 20+ punti luce per micro-dettagli su materiali.
-- [x] Integrazione definitiva `poltrona-3d.glb` con posizionamento e scala hero (1.28).
-- [x] Refinement atmosferico: nebbia densa e oscuramento background per contrasto massimo.
-- [x] Ottimizzazione particelle (count 28) per un look pulito e premium.
-- [x] Build di produzione verificata e pronta al deploy.
+- [x] Cleanup Global: Rimosso ogni riferimento a "Jack Robert" e varianti.
+- [x] Branding: Metodo ora referenziato semplicemente come "BLAST".
+- [x] Dynamic Portal: Implementato stato `videoUrl` in `App.tsx` con supporto per link esterni.
+- [x] UI/UX: Aggiunto campo di input `SplashScreen` con design neon/glassmorphism.
+- [x] UI/UX: Implementato Pannello Dinamico interno con doppia opzione (Link o File Locale).
+- [x] Logic: Gestione Blob URL per l'anteprima istantanea di file video locali.
+- [x] CORS: Abilitato `crossOrigin="anonymous"` nel `VideoPanel` per supportare video da URL esterni.
+- [x] Build: Validazione `npm run build` eseguita con successo.
 
 ### Tech Notes:
-- Lo shader dell'arco ora gestisce 3 colori con transizioni smoothstep e un core luminoso centrale.
-- Il pavimento utilizza un mix di riflessione blurrata e un layer di colore additivo per calore cromatico.
-- Setup luci ricalibrato: luce di halo singola e potente dietro l'arco, spot-light hero sulla poltrona.
-- Inserito piano scuro occlusivo sotto la poltrona per migliorarne il radicamento a terra.
+- L'input URL accetta file `.mp4` diretti; se vuoto, carica `video-welcome.mp4`.
+- Aggiunta protezione `decodeURI` e gestione `crossOrigin` per evitare errori di sicurezza Three.js.
+- Pannello dinamico posizionato sopra i controlli principali per discrezione.
 
 ### Next Steps:
-- Verificare il look finale in cuffia VR.
-- Raccogliere feedback sulla leggibilità dei testi in movimento.
+- [ ] Test di caricamento da link esterno (CORS) in ambiente live.
+- [ ] Push su GitHub branch `main`.
+
+---
+
+# Progress Log - 2026-03-16
 
 ## Task: Sincronizzazione Repository Architetturale
 **Stato**: Completato
@@ -44,17 +33,13 @@
 - [x] Sincronizzazione cartelle `01`, `02`, `03`, `04`, `05` dalla root al repo `06_REPO/xr-reset-kit-starter`.
 - [x] Build di produzione verificata post-sincronizzazione.
 - [x] Commit e Push su branch `main`.
-- [x] Audit qualitativo `index.html`: struttura pulita, font caricati correttamente, setup CSS per XR ottimizzato.
-- [x] Implementazione pulsante "Home": permette di resettare l'esperienza e tornare alla SplashScreen.
-- [x] Gestione Audio/Video: l'audio si interrompe correttamente quando si torna alla Home.
 - [x] Fix Mobile: la camera ora rileva l'orientamento portrait e si allontana per evitare tagli sui lati.
-- [x] Posizioni differenziate: `z: 6.2` (Mobile Chair) e `z: -7.5` (Mobile Portal) per visuale completa.
 - [x] Build di produzione verificata (40s) e deploy su Vercel aggiornato.
 
-### Tech Notes:
-- Utilizzato `size.height > size.width` da `@react-three/fiber` per il rilevamento del Portrait mode.
-- Il `CameraRig` ora include set di coordinate separate per desktop e mobile.
+## Task: Riproduzione Effetto Neon Cyberpunk
+**Stato**: Completato (Build OK)
 
-### Tech Notes:
-- Le cartelle aggiunte contengono documentazione statica e prompt, non influenzano il runtime React.
-- Sistema di log aggiornato correttamente.
+### Accomplishments:
+- [x] Creazione componente `Effects.tsx` (Bloom).
+- [x] Shader Gradient avanzato in `NeonArch.tsx` (Cyan-Violet-Pink + Core Glow).
+- [x] Integrazione definitiva `poltrona-3d.glb` con posizionamento e scala hero (1.28).

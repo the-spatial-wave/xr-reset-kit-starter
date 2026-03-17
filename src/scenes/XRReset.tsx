@@ -13,19 +13,20 @@ import { CameraRig } from '../components/CameraRig'
 interface XRResetProps {
   mode: 'DEFAULT' | 'VIDEO'
   entered: boolean
+  videoUrl: string
 }
 
-export function XRReset({ mode, entered }: XRResetProps) {
+export function XRReset({ mode, entered, videoUrl }: XRResetProps) {
   return (
     <>
       <Effects />
 
       {/* Audio Ambient — si attiva solo dopo l'ingresso, in pausa quando il portale è attivo */}
       {entered && (
-        <AudioPlayer 
-          url="/audio/audio ambient.mp3" 
-          volume={0.4} 
-          loop={true} 
+        <AudioPlayer
+          url="/audio/audio ambient.mp3"
+          volume={0.4}
+          loop={true}
           paused={mode === 'VIDEO'}
         />
       )}
@@ -93,12 +94,12 @@ export function XRReset({ mode, entered }: XRResetProps) {
       <group position={[0, 0.08, -0.52]} scale={0.66}>
         {/* Fronte: L'arco neon */}
         <NeonArch />
-        
+
         {/* Retro: Il pannello video (alzato e ingrandito per impatto cinematografico) */}
         <group position={[0, 1.55, -1.15]} rotation={[0, Math.PI, 0]} scale={1.32}>
-          <VideoPanel 
-            url="/video/video-welcome.mp4" 
-            visible={mode === 'VIDEO'} 
+          <VideoPanel
+            url={videoUrl}
+            visible={mode === 'VIDEO'}
           />
         </group>
       </group>

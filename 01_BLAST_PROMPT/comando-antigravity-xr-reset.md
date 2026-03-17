@@ -3,10 +3,10 @@
 
 ---
 
-## BLAST — Metodo Jack Robert
+## BLAST
 ### Prompt strutturato per Antigravity · Progetto: XR Starter Kit per Creator
 
-Il BLAST è il formato di kickoff AI-first sviluppato da Jack Robert.
+Il BLAST è il formato di kickoff AI-first.
 Ogni lettera copre un livello del progetto: Background, Layout, Actions, Safeguards, Tests.
 Incolla l'intero blocco nella chat AI di Antigravity (Cmd+L / Ctrl+L).
 
@@ -16,7 +16,7 @@ Incolla l'intero blocco nella chat AI di Antigravity (Cmd+L / Ctrl+L).
 ╔══════════════════════════════════════════════════════════════════════╗
 ║   BLAST — XR STARTER KIT PER CREATOR                                ║
 ║   Progetto: xr-immersive-web-v1 · The Spatial Wave                  ║
-║   Metodo: Jack Robert BLAST · AI-first dev prompt                   ║
+║   Metodo: BLAST · AI-first dev prompt                               ║
 ╚══════════════════════════════════════════════════════════════════════╝
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -192,7 +192,7 @@ T — TESTS  (criteri di successo)
 
 ## NOTE PER IL COLLEGA
 
-**Cos'e' il metodo BLAST di Jack Robert?**
+**Cos'e' il metodo BLAST?**
 E' un framework di prompting AI-first sviluppato per editor come Antigravity e Cursor.
 Struttura ogni richiesta in 5 livelli (Background, Layout, Actions, Safeguards, Tests)
 cosi' l'AI ha tutto il contesto necessario per eseguire in autonomia senza fare
@@ -214,4 +214,4 @@ Il BLAST usa un placeholder geometrico. Quando hai il modello 3D:
 
 ---
 
-*The Spatial Wave · xr-immersive-web skill v1.0 · Jack Robert BLAST method · 2026*
+*The Spatial Wave · xr-immersive-web skill v1.0 · BLAST method · 2026*
