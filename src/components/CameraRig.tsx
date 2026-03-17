@@ -1,5 +1,6 @@
 // CameraRig.tsx
 // Gestisce la transizione camera tra chair view e portal view
+// Basato sul setup xr-my-scenes - The Spatial Wave
 
 import { useRef } from 'react'
 import { useFrame, useThree } from '@react-three/fiber'
@@ -14,26 +15,28 @@ const LERP_SPEED = 0.04
 const ARRIVAL    = 0.06
 
 interface CameraRigProps {
-  videoMode: boolean
+  mode: 'DEFAULT' | 'VIDEO'
 }
 
-export function CameraRig({ videoMode }: CameraRigProps) {
+export function CameraRig({ mode }: CameraRigProps) {
   const { camera } = useThree()
   const active      = useRef(false)
-  const prevMode    = useRef(videoMode)
+  const prevMode    = useRef(mode)
   const currentLook = useRef(new THREE.Vector3(0, 1.0, 0))
 
   useFrame(() => {
+    const isVideo = mode === 'VIDEO'
+    
     // Avvia transizione al cambio di modalità
-    if (videoMode !== prevMode.current) {
-      prevMode.current = videoMode
+    if (mode !== prevMode.current) {
+      prevMode.current = mode
       active.current = true
     }
 
     if (!active.current) return
 
-    const targetPos  = videoMode ? PORTAL_POS  : CHAIR_POS
-    const targetLook = videoMode ? PORTAL_TARGET : CHAIR_TARGET
+    const targetPos  = isVideo ? PORTAL_POS  : CHAIR_POS
+    const targetLook = isVideo ? PORTAL_TARGET : CHAIR_TARGET
 
     camera.position.lerp(targetPos, LERP_SPEED)
     currentLook.current.lerp(targetLook, LERP_SPEED)

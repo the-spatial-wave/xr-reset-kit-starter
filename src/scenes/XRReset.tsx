@@ -1,5 +1,4 @@
-import { Suspense, useRef } from 'react'
-import { useFrame } from '@react-three/fiber'
+import { Suspense } from 'react'
 import * as THREE from 'three'
 import { Particles } from '../components/Particles'
 import { NeonArch } from '../components/NeonArch'
@@ -9,6 +8,7 @@ import { SceneTexts } from '../components/SceneTexts'
 import { Effects } from '../components/Effects'
 import { AudioPlayer } from '../components/AudioPlayer'
 import { VideoPanel } from '../components/VideoPanel'
+import { CameraRig } from '../components/CameraRig'
 
 interface XRResetProps {
   mode: 'DEFAULT' | 'VIDEO'
@@ -16,23 +16,6 @@ interface XRResetProps {
 }
 
 export function XRReset({ mode, entered }: XRResetProps) {
-  const portalGroupRef = useRef<THREE.Group>(null)
-  
-  // Animazione di rotazione del portale quando in modalità VIDEO
-  useFrame((state, delta) => {
-    if (!portalGroupRef.current) return
-    
-    // Target rotation: 180 gradi (PI) se mode === VIDEO, altrimenti 0
-    const targetRotation = mode === 'VIDEO' ? Math.PI : 0
-    
-    // Lerp rotazione per fluidità
-    portalGroupRef.current.rotation.y = THREE.MathUtils.lerp(
-      portalGroupRef.current.rotation.y,
-      targetRotation,
-      delta * 2.5
-    )
-  })
-
   return (
     <>
       <Effects />
@@ -106,16 +89,12 @@ export function XRReset({ mode, entered }: XRResetProps) {
       {/* ── ELEMENTI SCENA ── */}
       <Particles count={28} />
 
-      {/* Portale (Arco + Video sul retro) */}
-      <group 
-        ref={portalGroupRef}
-        position={[0, 0.08, -0.52]} 
-        scale={0.66}
-      >
+      {/* Portale (Fermo, camera si sposta sul retro) */}
+      <group position={[0, 0.08, -0.52]} scale={0.66}>
         {/* Fronte: L'arco neon */}
         <NeonArch />
         
-        {/* Retro: Il pannello video (visibile solo quando ruotato) */}
+        {/* Retro: Il pannello video (statico sul retro) */}
         <group position={[0, 1.25, -1.15]} rotation={[0, Math.PI, 0]}>
           <VideoPanel 
             url="/video/video ambient.mp4" 
@@ -142,8 +121,11 @@ export function XRReset({ mode, entered }: XRResetProps) {
         </group>
       </Suspense>
 
-      {/* Testi (visibili solo se non in modalità video per pulizia) */}
+      {/* Testi */}
       {mode === 'DEFAULT' && <SceneTexts />}
+
+      {/* Gestione Camera Cinematografica */}
+      <CameraRig mode={mode} />
     </>
   )
 }

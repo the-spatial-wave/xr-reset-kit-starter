@@ -45,16 +45,16 @@
 - [x] Build di produzione verificata post-sincronizzazione.
 - [x] Commit e Push su branch `main`.
 - [x] Audit qualitativo `index.html`: struttura pulita, font caricati correttamente, setup CSS per XR ottimizzato.
-- [x] Implementazione stato `mode` (DEFAULT/VIDEO) e UI di controllo START/STOP.
-- [x] Integrazione `AudioPlayer` con attivazione post-splash screen.
-- [x] Integrazione `VideoPanel` su retro-portale con rotazione animata (lerp).
-- [x] Build di produzione verificata post-integrazione (OK).
-- [x] Deploy aggiornato su Vercel.
+- [x] Implementazione stato `mode` (DEFAULT/VIDEO) e UI di controllo toggle "Start/Stop Portal".
+- [x] Audio Ambient: ora si mette in pausa all'apertura del portale e riprende dallo stesso punto alla chiusura.
+- [x] Video Portal: riproduzione singola (no loop), reset automatico all'inizio per ogni attivazione.
+- [x] Rimozione pulsante "Reset Focus" per una UI più pulita ed essenziale.
+- [x] Build di produzione verificata e deploy su Vercel aggiornato.
 
 ### Tech Notes:
-- La rotazione del portale è gestita tramite `THREE.MathUtils.lerp` per un movimento cinematografico fluido.
-- L'audio ambient è stato configurato per partire solo dopo l'interazione utente per rispettare le policy dei browser.
-- I percorsi degli asset sono ora assoluti (`/video/...`) per garantire la compatibilità cross-platform.
+- Utilizzato `sound.pause()` in Three.js per mantenere il timestamp dell'audio ambientale.
+- Logica di toggle pulsante in `App.tsx` basata sul valore di `mode`.
+- Video configurato con `video.currentTime = 0` ad ogni chiusura del portale.
 
 ### Tech Notes:
 - Le cartelle aggiunte contengono documentazione statica e prompt, non influenzano il runtime React.
