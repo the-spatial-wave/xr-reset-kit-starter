@@ -94,3 +94,11 @@ Non modificare la struttura di Effects.tsx. Per cambiare bloom:
 | `<SceneTexts />` | Titolo, sottotitolo, branding in 3D |
 | `<GraffitiChair />` | Poltrona graffiti (richiede GLTF in public/models/) |
 
+## Workflow & Execution Rules (Workflow OS)
+- **Single-focus execution**: Lavora su una dimensione alla volta (scena, luci, UI). Non mescolare i concetti.
+- **Scoped scene editing**: Definisci sempre la zona attiva (es. fronte/retro) e non toccare altre aree salvo esplicita richiesta.
+- **Lighting contrast discipline**: Mantieni una gerarchia chiara. 1 luce primaria, 1-2 accenti cromatici. Evita il washout.
+- **Validation before completion**: Verifica sempre chiarezza focale, contrasto e assenza di errori in console prima di chiudere un task.
+- **Plan Mode**: Per task complessi (>2 step), definisci zona, outcome atteso e vincoli prima di iniziare.
+
+

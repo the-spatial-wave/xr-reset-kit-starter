@@ -195,7 +195,7 @@ export function VideoPanel({ url, visible, onEnded }: VideoPanelProps) {
   // 7. Raf Update
   useFrame(() => {
     // Evitiamo texImage2D se il video non è pronto e non ha dimensioni
-    if (visible && !errorRef.current && video.readyState >= 3 && video.videoWidth > 0 && video.videoHeight > 0) {
+    if (visible && !errorRef.current && video.readyState >= 2 && video.videoWidth > 0 && video.videoHeight > 0) {
       texture.needsUpdate = true
     }
   })
