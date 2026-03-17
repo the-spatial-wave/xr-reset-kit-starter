@@ -93,3 +93,4 @@ Non modificare la struttura di Effects.tsx. Per cambiare bloom:
 | `<Effects />` | Bloom + Noise + Vignette |
 | `<SceneTexts />` | Titolo, sottotitolo, branding in 3D |
 | `<GraffitiChair />` | Poltrona graffiti (richiede GLTF in public/models/) |
+

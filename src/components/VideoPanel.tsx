@@ -59,9 +59,10 @@ const fragmentShader = `
 interface VideoPanelProps {
   url: string
   visible: boolean
+  onEnded?: () => void
 }
 
-export function VideoPanel({ url, visible }: VideoPanelProps) {
+export function VideoPanel({ url, visible, onEnded }: VideoPanelProps) {
   const videoRef = useRef<HTMLVideoElement | null>(null)
   const textureRef = useRef<THREE.VideoTexture | null>(null)
 
@@ -72,10 +73,11 @@ export function VideoPanel({ url, visible }: VideoPanelProps) {
   useEffect(() => {
     const video = document.createElement('video')
     video.src = encodeURI(url)
-    video.loop = true
+    video.loop = false
     video.muted = false      // audio del video abilitato
     video.playsInline = true
     video.preload = 'auto'
+    if (onEnded) video.addEventListener('ended', onEnded)
     videoRef.current = video
 
     const texture = new THREE.VideoTexture(video)
@@ -85,11 +87,12 @@ export function VideoPanel({ url, visible }: VideoPanelProps) {
     uniforms.uVideo.value = texture
 
     return () => {
+      if (onEnded) video.removeEventListener('ended', onEnded)
       video.pause()
       texture.dispose()
       uniforms.uVideo.value = null
     }
-  }, [url, uniforms])
+  }, [url, uniforms, onEnded])
 
   useEffect(() => {
     const video = videoRef.current
