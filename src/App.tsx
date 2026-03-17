@@ -326,6 +326,10 @@ export default function App() {
             className="control-btn"
             style={{ borderColor: 'rgba(255, 255, 255, 0.2)' }}
             onClick={() => {
+              if (videoUrl.startsWith('blob:')) URL.revokeObjectURL(videoUrl)
+              setVideoUrl('/video/video-welcome.mp4')
+              setTempUrl('')
+              setVideoTab('file')
               setEntered(false)
               setMode('DEFAULT')
             }}
