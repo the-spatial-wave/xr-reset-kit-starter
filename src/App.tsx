@@ -65,6 +65,19 @@ export default function App() {
         >
           {mode === 'VIDEO' ? 'Stop Portal' : 'Start Portal'}
         </button>
+
+        {mode === 'DEFAULT' && (
+          <button 
+            className="control-btn"
+            style={{ borderColor: 'rgba(255, 255, 255, 0.2)' }}
+            onClick={() => {
+              setEntered(false)
+              setMode('DEFAULT')
+            }}
+          >
+            Home
+          </button>
+        )}
       </div>
 
       <div
