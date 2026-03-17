@@ -97,7 +97,7 @@ export function XRReset({ mode, entered }: XRResetProps) {
         {/* Retro: Il pannello video (alzato e ingrandito per impatto cinematografico) */}
         <group position={[0, 1.55, -1.15]} rotation={[0, Math.PI, 0]} scale={1.32}>
           <VideoPanel 
-            url="/video/video ambient.mp4" 
+            url="/video/video-welcome.mp4" 
             visible={mode === 'VIDEO'} 
           />
         </group>

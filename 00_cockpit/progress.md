@@ -47,11 +47,13 @@
 - [x] Audit qualitativo `index.html`: struttura pulita, font caricati correttamente, setup CSS per XR ottimizzato.
 - [x] Implementazione pulsante "Home": permette di resettare l'esperienza e tornare alla SplashScreen.
 - [x] Gestione Audio/Video: l'audio si interrompe correttamente quando si torna alla Home.
-- [x] Build di produzione verificata (31s) e deploy Vercel aggiornato.
+- [x] Fix Mobile: la camera ora rileva l'orientamento portrait e si allontana per evitare tagli sui lati.
+- [x] Posizioni differenziate: `z: 6.2` (Mobile Chair) e `z: -7.5` (Mobile Portal) per visuale completa.
+- [x] Build di produzione verificata (40s) e deploy su Vercel aggiornato.
 
 ### Tech Notes:
-- Lo stato `entered` viene resettato a `false`, innescando il rimontaggio del componente `SplashScreen`.
-- Il pulsante Home è visibile solo in modalità `DEFAULT` per mantenere pulita la visualizzazione video.
+- Utilizzato `size.height > size.width` da `@react-three/fiber` per il rilevamento del Portrait mode.
+- Il `CameraRig` ora include set di coordinate separate per desktop e mobile.
 
 ### Tech Notes:
 - Le cartelle aggiunte contengono documentazione statica e prompt, non influenzano il runtime React.
