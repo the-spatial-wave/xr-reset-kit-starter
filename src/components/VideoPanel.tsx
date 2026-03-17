@@ -19,8 +19,8 @@ const fragmentShader = `
   varying vec2 vUv;
 
   void main() {
-    // Flip X per orientamento corretto (piano ruotato 180° su Y)
-    vec2 uv = vec2(1.0 - vUv.x, vUv.y);
+    // Orientamento standard (rimosso flip X che invertiva le scritte)
+    vec2 uv = vec2(vUv.x, vUv.y);
 
     // Zona video centrale vs bordi scuri del portale
     float fadeX = smoothstep(0.0, 0.14, uv.x) * smoothstep(1.0, 0.86, uv.x);

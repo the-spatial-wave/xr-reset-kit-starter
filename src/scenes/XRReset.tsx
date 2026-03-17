@@ -94,8 +94,8 @@ export function XRReset({ mode, entered }: XRResetProps) {
         {/* Fronte: L'arco neon */}
         <NeonArch />
         
-        {/* Retro: Il pannello video (statico sul retro, alzato e ingrandito) */}
-        <group position={[0, 1.35, -1.15]} rotation={[0, Math.PI, 0]} scale={1.14}>
+        {/* Retro: Il pannello video (alzato e ingrandito per impatto cinematografico) */}
+        <group position={[0, 1.55, -1.15]} rotation={[0, Math.PI, 0]} scale={1.32}>
           <VideoPanel 
             url="/video/video ambient.mp4" 
             visible={mode === 'VIDEO'} 
